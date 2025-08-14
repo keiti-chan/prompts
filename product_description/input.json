@@ -1,0 +1,43 @@
+{
+  "seed": 42,
+  "product_name": "Inter Miami Away Kids Football Kit 2025/26 (With Socks)",
+  "team_name": "Inter Miami",
+  "league_name": "MLS",
+  "season": "2025/26",
+  "kit_type": "Away",
+  "audience": "Kids",
+  "socks_included": true,
+
+  "replica_notice": "This is a high-quality replica shirt/kit.",
+  "banned_terms": ["official", "authentic player-issue", "licensed"],
+
+  "delivery_notes": {
+    "uk": "7–12 working days",
+    "eu": "8–14 working days"
+  },
+  "returns_policy_note": "Personalised items cannot be returned unless defective.",
+  "personalisation_available": true,
+
+  "urgency_reason": "limited kids sizes this season",
+  "testimonial_pool": [
+    "Perfect birthday gift — my son hasn’t taken it off!",
+    "Great fit and the quality is much better than I expected."
+  ],
+
+  "links": {
+    "home_url": "https://replicafootballshirt.com/?form=MG0AV3",
+    "league_url": "https://replicafootballshirt.com/product-category/serie-a-replica-football-shirt/?form=MG0AV3",
+    "team_url": "https://replicafootballshirt.com/product-category/serie-a-replica-football-shirt/as-roma-replica-football-shirt/"
+  },
+
+  "style_variant": "supporter" /* choices: supporter | shop-assistant | gift-giver */,
+  "layout_variant": 2,          /* 1..3 controls section ordering */
+  "opener_style": "pride",      /* pride | nostalgia | big-match | gift */
+  "cta_style": "now_simple",    /* now_simple | gift_deadline | low_stock */
+  "max_phrase_overlap": 0.35,   /* aim to avoid stock phrases */
+  "brand_voice_rules": [
+    "Warm, plain-spoken, family-friendly.",
+    "British English spelling.",
+    "Never use the word 'official'."
+  ]
+}
