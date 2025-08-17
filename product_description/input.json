@@ -1,40 +1,85 @@
 {
-  "seed": 42,
+  "seed": 43,
   "product_name": "Inter Miami Away Kids Football Kit 2025/26 (With Socks)",
   "team_name": "Inter Miami",
   "league_name": "MLS",
   "season": "2025/26",
   "kit_type": "Away",
-  "audience": "Kids",
+  "audience": "Kids Kit",
   "socks_included": true,
+  "personalisation_available": true,
+  "team_facts": true,
+  "player_name": "MESSI 10",
+  "max_phrase_overlap": 0.35,
+  "review_file": "trustpilot_reviews_kfk.csv",
 
-  "replica_notice": "This is a high-quality replica shirt/kit.",
-  "banned_terms": ["official", "authentic player-issue", "licensed"],
+  "legal_notice": "This is a high-quality fan-version shirt/kit.",
 
   "delivery_notes": {
     "uk": "7–12 working days",
     "eu": "8–14 working days"
   },
-  "returns_policy_note": "Personalised items cannot be returned unless defective.",
-  "personalisation_available": true,
 
-  "urgency_reason": "limited kids sizes this season",
-  "testimonial_pool": [
-    "Perfect birthday gift — my son hasn’t taken it off!",
-    "Great fit and the quality is much better than I expected."
+  "slogan": [
+  	"Shop with confidence — secure payments and a satisfaction guarantee on every order.",
+	"Your purchase is protected from checkout to delivery, backed by our 100% satisfaction goal.",
+	"Every order is supported by our commitment to safe shopping and trusted service.",
+	"Secure, reliable, and committed to making sure you’re satisfied with every order.",
+	"Built on trust—safe transactions, clear policies, and reliable support for every customer.",
+	"Shop safely, knowing every order is covered by our satisfaction-first approach.",
+	"From order to delivery, your purchase is always protected and handled with care.",
+	"Our priority is your peace of mind: safe shopping and dependable service.",
+	"Confidence built in—secure checkout and customer care you can trust.",
+	"A safe shopping experience, backed by our dedication to customer satisfaction.",
+	"Every order comes with the reassurance of secure payment and reliable handling.",
+	"Your satisfaction is central; our service is designed for peace of mind at every step.",
+	"Trusted by customers, powered by safe shopping, and guided by a 100% satisfaction promise.",
+	"A safe, protected shopping experience—because your trust is our most important goal.",
+	"We’re committed to safe transactions, secure delivery, and your complete satisfaction.",
+	"Shop worry-free with guaranteed security and customer-first service.",
+	"Every product we sell is backed by safe checkout and our commitment to your happiness.",
+	"Where safe shopping and dedicated service meet — built for your confidence.",
+	"Every order is backed by secure checkout and our commitment to your satisfaction.",
+	"Shop with confidence, knowing your purchase is fully protected from start to finish.",
+	"We believe safe shopping and trusted service should come as standard.",
+	"Your trust matters most to us — that’s why every order is handled with care.",
+	"From checkout to delivery, we’re here to make sure you feel at ease.",
+	"We don’t just sell — we provide peace of mind with every purchase.",
+	"A straightforward, safe shopping experience, built on trust and reliability.",
+	"Every customer deserves service they can rely on, and we deliver exactly that.",
+	"Secure payments and dependable service—because your order deserves nothing less.",
+	"We’re proud to offer a safe, worry-free shopping experience for every customer.",
+	"Your satisfaction isn’t an extra — it’s at the heart of everything we do.",
+	"We’ve built our service around one aim: your peace of mind.",
+	"You can count on us for safe shopping and support you can trust.",
+	"Every kit we send is backed by our promise of safe, reliable service.",
+	"We put customer care first, so you can shop with complete confidence.",
+	"Shopping with us means secure checkout and service you can trust.",
+	"Our priority is making sure you feel safe and supported at every step.",
+	"We’re committed to giving you a smooth, dependable shopping experience.",
+	"With us, it’s not just about the shirt — it’s about the confidence behind it.",
+	"We take pride in making every purchase simple, safe, and reliable.",
+	"Your order is always protected with secure checkout and trusted service.",
+	"Shop stress-free, knowing your satisfaction is at the centre of what we do.",
+	"Every order is backed by our promise of safe shopping and dependable care.",
+	"We’re committed to giving you confidence every time you place an order.",
+	"Your peace of mind is part of the service we provide with every order.",
+	"From payment to delivery, we keep your order secure and supported.",
+	"A trusted service designed to give you confidence in every purchase.",
+	"We treat every order with the same care we’d expect as customers ourselves.",
+	"You can rely on us for secure shopping and a smooth buying experience.",
+	"Our focus is simple: safe transactions and customer satisfaction.",
+	"Every order is protected by the care and attention you deserve.",
+	"Shop with ease, knowing we stand firmly behind our service.",
+	"Trust, security, and customer care—built into every order."
   ],
 
   "links": {
-    "home_url": "https://replicafootballshirt.com/?form=MG0AV3",
-    "league_url": "https://replicafootballshirt.com/product-category/serie-a-replica-football-shirt/?form=MG0AV3",
-    "team_url": "https://replicafootballshirt.com/product-category/serie-a-replica-football-shirt/as-roma-replica-football-shirt/"
+    "home_url": "https://kidsfootballkit.co.uk/",
+    "other_leagues_url": "https://kidsfootballkit.co.uk/product-category/other-leagues/",
+    "league_url": "https://kidsfootballkit.co.uk/product-category/other-leagues/inter-miami/"
   },
 
-  "style_variant": "supporter" /* choices: supporter | shop-assistant | gift-giver */,
-  "layout_variant": 2,          /* 1..3 controls section ordering */
-  "opener_style": "pride",      /* pride | nostalgia | big-match | gift */
-  "cta_style": "now_simple",    /* now_simple | gift_deadline | low_stock */
-  "max_phrase_overlap": 0.35,   /* aim to avoid stock phrases */
   "brand_voice_rules": [
     "Warm, plain-spoken, family-friendly.",
     "British English spelling.",
