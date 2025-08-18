@@ -1,8 +1,8 @@
 {
-  "seed": 44,
+  "seed": 45,
   "product_name": "Inter Miami Away Kids Football Kit 2025/26 (With Socks)",
   "team_name": "Inter Miami",
-  "league_name": "MLS",
+  "league_name": "teams",
   "season": "2025/26",
   "kit_type": "Away",
   "audience": "Kids Kit",
@@ -12,6 +12,7 @@
   "player_name": "MESSI 10",
   "max_phrase_overlap": 0.35,
   "review_file": "trustpilot_reviews_kfk.csv",
+  "email_address": "kid.football.kit@gmail.com",
 
   "legal_notice": "This is a high-quality fan-version shirt/kit.",
 
@@ -76,8 +77,8 @@
 
   "links": {
     "home_url": "https://kidsfootballkit.co.uk/",
-    "other_leagues_url": "https://kidsfootballkit.co.uk/product-category/other-leagues/",
-    "league_url": "https://kidsfootballkit.co.uk/product-category/other-leagues/inter-miami/"
+    "team_url": "https://kidsfootballkit.co.uk/product-category/other-leagues/inter-miami/",
+    "league_url": "https://kidsfootballkit.co.uk/product-category/other-leagues/"
   },
 
   "brand_voice_rules": [

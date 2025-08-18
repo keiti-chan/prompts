@@ -15,7 +15,7 @@ Write in British English. Output HTML ONLY — no explanations.
 - Avoid high phrase overlap with past outputs: aim for max {{json.max_phrase_overlap}} phrase reuse; prefer fresh wording over templates.
 - Use the selected style knobs:
   - layout_variant (1..5) affects section order; pick index = ({{json.seed}} % 5) + 1 unless provided.
-  - cta_style                              // randomly pick one from "now_simple", "gift_deadline", "low_stock";
+  - cta_style                              // randomly pick one from 15 styles defined in CTA RULES;
 - Introduce the team and/or the player by use factual details like specific seasons, star players, or achievements to build authority.
 - Partnerships: Do not claim or imply any official partnerships.
 - Accuracy: Do not invent technical fabric technologies or supplier details. Keep material language general such as “soft”, “lightweight feel”, “comfortable for everyday wear”.
@@ -39,6 +39,24 @@ Write in British English. Output HTML ONLY — no explanations.
 - Always start with TITLE.
 - If you do not follow the layout order exactly, the output will be considered incorrect and rejected.
 
+# FINAL QA (SILENT, BEFORE OUTPUT)
+Before printing anything, run a silent QA pass. Do NOT print your reasoning—output ONLY the final HTML.
+
+Pass criteria (all must be true):
+1) Layout: Section order exactly matches the chosen layout_variant; each section appears once; output starts with TITLE.
+2) TITLE: Exactly one <h2> slogan and one <h3> CTA; no <h1>; no product name.
+3) CTAs: Exactly TWO in total, different from each other, valid style, and appear only in TITLE and DESCRIPTION.
+4) Placeholders: No unresolved placeholders or template syntax remain (no braces/logic/conditionals/helpers of any kind).
+5) Links & Data: All dynamic values are realised as plain HTML text/attributes; no literal keys or code fragments remain.
+6) Language & Claims: British English; warm and human; banned terms avoided; no authenticity/licensing claims; no invented fabric tech; avoid “matchday” for non-UK teams.
+7) Description rules: “Package includes” built exactly as specified; email in CONTACT is a clickable mailto link; PLAYER has 3–5 distinct bullets with digits dropped from names like “MESSI 10” → “Messi”; REVIEWS has exactly 3 items and reads naturally.
+8) HTML Integrity: Output is well-formed HTML with normal readable text. There are **no unknown, garbled, or non-printing characters**, and **no leftover template or code artifacts**. If any character or snippet looks out of place, unreadable, or not typical of clean HTML/text, treat it as an error.
+
+If ANY check fails:
+- Silently FIX the affected parts (resolve/replace/omit as appropriate).
+- Re-run this QA pass.
+- Print ONLY the corrected final HTML.
+
 <!-- =========================
      SECTION DEFINITIONS
      (Build once; order decided later)
@@ -46,9 +64,8 @@ Write in British English. Output HTML ONLY — no explanations.
 
 <!-- 1) TITLE -->
 <!-- __SECTION_TITLE__ -->
-<h1 style="text-align: center;"><span style="color: #942506;"><strong>{{json.product_name}}</strong></span></h1>
-
-<!-- Added variation options instead of always rigid product_name. -->
+<!-- Added variation options instead of always rigid product_name. 
+  - This section does NOT include the product name and must NOT contain an <h1> heading. -->
 
 <!-- Choose a slogan randomly from {{json.slogan}} -->
    <h2 style="text-align: center;"><span style="color: #800000;"><strong>{{SLOGAN}}</strong></span></h2>
@@ -65,10 +82,10 @@ Write in British English. Output HTML ONLY — no explanations.
 <!-- Changed rigid heading to allow more natural variation -->
 
 <ul>
-  <!-- Opener: Start with urgency + emotional connection: Open with 1 sentence that combines excitement, pride, and a reason to act now. Do not mention "matchday" if it is non-UK team. Do not mention stock is limited. Ensure at least one benefit sounds like a parent testimonial (imagined but natural), and another is short and casual. -->
+  <!-- Opener: Start with urgency + emotional connection: Open with 1 sentence that combines excitement, pride, and a reason to act now. Do not mention "matchday" if it is non-UK team. Ensure at least one benefit sounds like a parent testimonial (imagined but natural), and another is short and casual. -->
   {{UNIQUE_OPENER}}
 
-  <!-- Benefits (turn features into parent-focused benefits; never invent fabric tech): Include comfort/fit, confidence, matchday vibe, gifting. -->
+  <!-- Benefits (turn features into parent-focused benefits; never invent fabric tech): Include comfort/fit, confidence, matchday vibe (only for uk team), gifting. -->
   <!-- Ensure one bullet feels anecdotal, e.g. “Parents tell us their kids didn’t want to take it off after school.” -->
   {{UNIQUE_BENEFITS}}
 </ul>
@@ -145,7 +162,7 @@ Write in British English. Output HTML ONLY — no explanations.
 <!-- __SECTION_CONTACT__ -->
 <h2><strong>How to Reach Us</strong></h2>
 <ul>
-  <!-- Email address: Please add email address kid.football.kit@gmail.com and the email address is clickable-->
+  <!-- Email address: Please add email address {{json.email_address}} and the email address is clickable-->
   <li>Email: {{EMAIL_ADDRESS}}</li>
   <!-- contact page: Please generate an description and let the customer to contact us on the contact page https://kidsfootballkit.co.uk/contact/ -->
   <li>{{CONTACT_PAGE}}</li>
@@ -176,14 +193,19 @@ Write in British English. Output HTML ONLY — no explanations.
 {{#if (and json.player_name (ne (trim json.player_name) ""))}}
 <h2><strong>About the Player</strong></h2>
 <ul>
-   <!-- Write 3–5 sentences about the player.
+   <!-- Write 3–5 distinct sentences about the player. 
+      - Generate 3 distinct player fact bullets without duplication
       - Drop the shirt-number digits (e.g. "MESSI 10" → "Messi").
       - Blend admiration with casual phrasing: “Everyone knows Messi… and honestly, kids light up when they hear his name.”
       - Avoid sounding like a CV. Mix short and long sentences.
       - Use small human touches, e.g. “Parents tell us their kids tried to dribble like him in the garden.”
       - Imperfect tone is welcome: an aside, playful quirk, or light exaggeration makes it feel real.
       - Keep facts accurate but presented as storytelling, not as a formal summary. -->
-  <li>{{ABOUT_THE_PLAYER}}</li>
+   <li>{{PLAYER_FACT_1}}</li>
+   <li>{{PLAYER_FACT_2}}</li>
+   <li>{{PLAYER_FACT_3}}</li>
+   {{#if PLAYER_FACT_4}}<li>{{PLAYER_FACT_4}}</li>{{/if}}
+   {{#if PLAYER_FACT_5}}<li>{{PLAYER_FACT_5}}</li>{{/if}}
 </ul>
 {{/if}}
 <!-- __END_SECTION_PLAYER__ -->
@@ -208,8 +230,8 @@ Write in British English. Output HTML ONLY — no explanations.
 <h2><strong>The Following Products May Interest You:</strong></h2>
 <ul>
   <li>Explore our full range of <a href="{{json.links.home_url}}"><strong>Kids Football Kits</strong></a> -- find your perfect kits/shirts.</li>
-  {{json.links.league_url ? '<li>Browse our exclusive <a href="' + json.links.league_url + '"><strong>' + json.league_name + '</strong></a> -- perfect look kids football kits/shirts.</li>' : ''}}
-  {{json.links.other_leagues_url ? '<li>Discover <a href="' + json.links.other_leagues_url + '"><strong>Other Leagues Collections</strong></a> -- support your favourite team.</li>' : ''}}
+  {{json.links.league_url ? '<li>Browse our exclusive <a href="' + json.links.league_url + '"><strong>' + json.league_name + '</strong></a> -- perfect for kids’ football kits and shirts.</li>' : ''}}
+  {{json.links.team_url ? '<li>Discover other shirts and/or kits of <a href="' + json.links.team_url + '"><strong>' + json.team_name + '</strong></a> -- support your favourite team.</li>' : ''}}
 </ul>
 <!-- __END_SECTION_RELATED__ -->
 
@@ -268,15 +290,15 @@ Include TITLE first in all variants. -->
 
 {{#if (eq json.layout_variant 4)}}
   <!-- LAYOUT VARIANT 4 -->
-  <!-- Order: Benefit → Description → Delivery → How to Reach Us → Payment → Review → Player → Team → Related -->
+  <!-- Order: Benefit → Description → Review → Delivery → How to Reach Us → Payment → Player → Team → Related -->
   <!-- DO NOT CHANGE THIS ORDER -->
   <!-- OUTPUT TITLE -->
   <!-- OUTPUT BENEFITS -->
   <!-- OUTPUT DESCRIPTION -->
+  <!-- OUTPUT REVIEWS -->
   <!-- OUTPUT DELIVERY -->
   <!-- OUTPUT CONTACT -->
   <!-- OUTPUT PAYMENT -->
-  <!-- OUTPUT REVIEWS -->
   <!-- OUTPUT PLAYER -->
   <!-- OUTPUT TEAM -->
   <!-- OUTPUT RELATED -->
@@ -300,8 +322,6 @@ Include TITLE first in all variants. -->
 
 
 # DIVERSITY & UNIQUENESS CONTROLS
-- Use (seed % N)+1 to pick:
-  - One of 8 opener phrasings, one of 8 CTA endings, one of 6 paragraph cadences.
 - Vary clause order and connectors; avoid repeating phrases like “whether you’re at the match or at home”.
 - Keep sentences 8–22 words on average; include 1–2 short punchy lines.
 
@@ -311,22 +331,29 @@ Include TITLE first in all variants. -->
 - If season is missing, don’t mention a season.
 - If kids sizing guidance not provided, avoid precise CM measurements.
 
-# CTA RULES
-#- Exactly ONE CTA must be included in every product description.
-#- Placement: insert the CTA as the final line inside the Description section list items (after Durability or legal notice).
-#- Style: randomly choose ONE of the three styles below, unless a style is specified in the JSON.
-#  - now_simple: “Add to basket and get the kit on the way.”
-#  - gift_deadline: “If it’s for a birthday, order soon to avoid last-minute stress.”
-#  - low_stock: “Popular sizes go quickly — grab yours before they disappear.”
 
 CTA RULES
 - Exactly TWO CTAs must be included in every product description and they should be different.
   1) One CTA under the TITLE section (already defined as {{CTA_LINE}})
   2) One CTA as the final line inside the Description section list items.
 - Do not add CTAs in any other sections.
-- Style for both CTAs: randomly choose ONE of the three styles below, unless a style is specified in the JSON.
+- The TWO CTAs should be different.
+- Style for both CTAs: randomly choose ONE of the 15 styles below, unless a style is specified in the JSON.
   - now_simple: “Add to basket and get the kit on the way.”
   - gift_deadline: “If it’s for a birthday, order soon to avoid last-minute stress.”
   - low_stock: “Popular sizes go quickly — grab yours before they disappear.”
+  - treat_your_kid: “Make their day — order now and let them enjoy wearing it right away.”
+  - peace_of_mind: “Check out today and relax knowing your kit is on its way.”
+  - play_ready: “Order now so it’s ready for the next kickabout or playtime.”
+  - smile_delivery: “Add to basket and look forward to the smile when it arrives.”
+  - parent_choice: “Trusted by parents — grab yours today with just a click.”
+  - quick_win: “One simple step — order today and it’s sorted.”
+  - family_fun: “Pop it in the basket and get ready for family football fun.”
+  - memory_maker: “Secure yours now and create those little moments kids never forget.”
+  - no_fuss: “Easy checkout, quick delivery — order now without the hassle.”
+  - proud_parent: “Order today and enjoy seeing them wear it with pride.”
+  - everyday_ready: “Add it now so they’re geared up for school, park, or play.”
+  - happy_surprise: “Treat them today — a little surprise that goes a long way.”
+
 
 OUTPUT: Return only the final HTML block. No markdown, no explanations.
