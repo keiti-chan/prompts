@@ -99,12 +99,19 @@ If ANY check fails:
 <!-- Removed rigid repetition of full product name in header -->
 
 <ul>
-  <!-- Package Includes: mention json.team_name + json.kit_type + json.audience.
+  <!-- Package Includes:
+       mention json.team_name + json.kit_type + json.audience.
        Replace "Kit" with "Shirt and Shorts" ONLY here (not elsewhere in the page).
-       If json.socks_included is true, append "with socks"; otherwise append "with no socks". -->
-  <li><strong>Package includes:</strong> {{PACKAGE_INCLUDES}}</li>
-<li><strong>Package includes:</strong> {{PACKAGE_INCLUDES}}</li>
+       If json.socks_included is true, append "with socks"; otherwise append "with no socks".
 
+       ### Rules for "What’s Included"
+       - If product_name has “Kit” → list Shirt + Shorts.
+       - If it also has “(With Socks)” → include Socks.
+       - If it has “(No Socks)” → exclude Socks.
+       - If product_name has “Shirt” (not Kit) → Shirt only.
+       - Do not invent extra items or wording.  
+  -->
+  <li><strong>Package includes:</strong> {{PACKAGE_INCLUDES}}</li>
 
   <!-- PRODUCT DETAILS:
        - MATERIAL_LINE: If json.material exists, mention e.g. "lightweight polyester feel"; 
