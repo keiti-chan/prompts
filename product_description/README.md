@@ -133,60 +133,57 @@ Each **SECTION** is defined once, and a final **LAYOUT CONTROL** block dictates 
    - H1 with product name; short, warm intro; **CTA #1** (`{{CTA_LINE}}`) under the title.
 
 2. **BENEFITS**  
-   - Emotional, parent‑oriented bullets. Mix lengths. Includes a casual anecdotal line.
+   - Emotional, parent‑oriented bullets. Mix lengths. Includes a casual anecdotal line. 
 
-3. **PRODUCT DETAILS**
-Each description must include a Product Details block with the heading:
+3. **DESCRIPTION**  
+   - Key bullets including *Package includes* (special wording), *Personalisation* (if available), durability/fit, a legal line, and **CTA #2** as the **final** `<li>` in this section.
+- Each description must include a Product Details block with the heading:
 “{{json.team_name}} Kit: Key Details & Features”
 The block should cover:
  Material: Always mention polyester (100% lightweight). Add light benefit wording (comfort, durability, washability). Avoid technical fabric jargon.
  Club Inspiration: Link to shirts worn by {{json.team_name}} players.
  Detail: Mention neckline or small authentic touch.
  Print & Logos: Note that crest/sponsor logos are printed with durable finish.
- Washing: Simple care line, e.g. machine wash cold, air dry.  
-     
+ Washing: Simple care line, e.g. machine wash cold, air dry. 
 
-4. **DESCRIPTION**  
-   - Key bullets including *Package includes* (special wording), *Personalisation* (if available), durability/fit, a legal line, and **CTA #2** as the **final** `<li>` in this section.
-
-5. **DELIVERY**  
+4. **DELIVERY**  
    - UK and EU timings; a note about potential delays (`{{POSSIBLE_DELAY}}`) and a friendly pointer to delivery details (`{{DELIVERY_DETAILS}}`).
 
-6. **PAYMENT**  
+5. **PAYMENT**  
    - Payment methods and a short human line for payment issues (`{{PAYMENT_ISSUE}}`).
 
-7. **CONTACT (“How to Reach Us”)**  
+6. **CONTACT (“How to Reach Us”)**  
    - Clear support email line with friendly tone. (Make sure your email matches your shop.)
 
-8. **TEAM** *(conditional on `team_facts`)*  
+7. **TEAM** *(conditional on `team_facts`)*  
  - Display 4–6 bullets introducing the club in a light, fan-friendly way, 80-100 words
  Do not invent facts. Use only text provided in the club library (team_knowledge.paragraph).
  If no club text is provided, output one neutral support line (no specifics).
  Mix short and long sentences; avoid encyclopedia tone.
 
-9. **PLAYER** *(conditional on `player_name`)*  
+8. **PLAYER** *(conditional on `player_name`)*  
  - Output a story-style paragraph about the player, 80-100 words
  Drop the shirt number from the name (e.g., “MESSI 10” → “Messi”).
  Use only text provided in the player library (player_knowledge.paragraph).
  If no player text is provided, output one neutral admiration line.
  Allow a gentle playful touch; keep it human; never invent trophies or stats.
 
-10. **REVIEWS**  
+9. **REVIEWS**  
    - Pull **3** short, human‑sounding summaries from `review_file`, including **≥1 recent** (last 2 months). Output reviewer name + date + paraphrased quote.
 
-11. **RELATED**  
+10. **RELATED**  
     - Links to **home**, **league/team collection**, and **other leagues** with short, helpful lead‑ins.
 
-12. **LAYOUT CONTROL (OUTPUT ORDER)**  
+11. **LAYOUT CONTROL (OUTPUT ORDER)**  
     - Five predefined layout variants. The prompt tells the model to **render sections above** and then **output them in this exact order** for the chosen variant. **TITLE is always first.**
 
-13. **DIVERSITY & UNIQUENESS**  
+12. **DIVERSITY & UNIQUENESS**  
     - Encourages varied sentence lengths, connectors, and fresh phrasing. Soft cap via `max_phrase_overlap`.
 
-14. **RISK & COMPLIANCE**  
+13. **RISK & COMPLIANCE**  
     - No “official”, no licensing/auth claims, no invented fabric tech, and safety around specific measurements.
 
-15. **CTA RULES**  
+14. **CTA RULES**  
     - **Two CTAs total**: one under **TITLE**, one as the **final line** of **DESCRIPTION**. Styles: `now_simple`, `gift_deadline`, `low_stock`.
 
 ---
