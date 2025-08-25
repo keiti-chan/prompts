@@ -103,6 +103,24 @@ If ANY check fails:
        Replace "Kit" with "Shirt and Shorts" ONLY here (not elsewhere in the page).
        If json.socks_included is true, append "with socks"; otherwise append "with no socks". -->
   <li><strong>Package includes:</strong> {{PACKAGE_INCLUDES}}</li>
+<li><strong>Package includes:</strong> {{PACKAGE_INCLUDES}}</li>
+
+
+  <!-- PRODUCT DETAILS:
+       - MATERIAL_LINE: If json.material exists, mention e.g. "lightweight polyester feel"; 
+         else fallback to "soft, lightweight feel for everyday wear".
+       - CLUB_INSPIRATION: Mention team_name and tie to shirts worn by players,
+         else fallback to "inspired by the club colours".
+       - NECKLINE_DETAIL: If json.neckline exists, include (e.g. V-neck, crew neck); 
+         else fallback to "a comfortable neckline that looks smart".
+       - LOGO_PRINT: Always include a parent-friendly line like 
+         "Crest and sponsor areas use a smooth, durable finish".
+       - WASHING_EXTRA: Add a short casual tip (e.g. "cold wash, air dry, and it’ll keep its colours"). -->
+  <li><strong>Material & Feel:</strong> {{MATERIAL_LINE}}</li>
+  <li><strong>Club Inspiration:</strong> {{CLUB_INSPIRATION}}</li>
+  <li><strong>Design Detail:</strong> {{NECKLINE_DETAIL}}</li>
+  <li><strong>Print & Logos:</strong> {{LOGO_PRINT}}</li>
+  <li><strong>Care:</strong> {{WASHING_EXTRA}}</li>
 
   {{#if json.personalisation_available}}
   <li><strong>Personalisation: </strong> Available (name up to 13 characters, number up to 2 digits).</li>
