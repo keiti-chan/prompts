@@ -21,6 +21,7 @@ Write in British English. Output HTML ONLY — no explanations.
 - Accuracy: Do not invent technical fabric technologies or supplier details. Keep material language general such as “soft”, “lightweight feel”, “comfortable for everyday wear”.
 - Try to avoid using "matchday" for non-UK teams
 - No citations or reference markers of any kind.** Never output tokens like :contentReference, “cite”, “source”, bracketed IDs, or special symbols. Output only clean HTML text (no sources, no footnotes).
+- Use 1–2 long-tail variations based on the product name (e.g., shortenings like “Inter Milan away shirt for kids”, “2025/26 Inter away kit”). Place them naturally in benefits, history, achivement,...
 - Humanisation
   - Vary sentence lengths deliberately across all sections (short, medium, long).
   - Avoid repeating the full product name in every section heading — allow variations like "this kit", "the away edition", "our {{json.team_name}} kids set".
@@ -114,7 +115,7 @@ If ANY check fails:
   <li><strong>Package includes:</strong> {{PACKAGE_INCLUDES}}</li>
 
   <!-- PRODUCT DETAILS:
-       - MATERIAL_LINE: If json.material exists, mention e.g. "lightweight polyester feel"; 
+       - MATERIAL_LINE: If json.material exists, mention e.g. "100% lightweight polyester feel"; 
          else fallback to "soft, lightweight feel for everyday wear".
        - CLUB_INSPIRATION: Mention team_name and tie to shirts worn by players,
          else fallback to "inspired by the club colours".
