@@ -200,9 +200,11 @@ If ANY check fails:
 {{#if json.team_facts}}
 <h2><strong>About {{json.team_name}}</strong></h2>
 <ul>
-  <!-- Write 3–5 sentences about the team’s history, stadium, achievements, and recent progress.
-    - Avoid textbook or Wikipedia-style summaries.
-    - Mix sentence lengths deliberately (some short, some meandering).
+  <!-- Write 4–6 sentences about the team’s history, stadium, achievements, and recent progress in the fan-friendly way (80–100 words total)
+    - Do not invent facts, only use text provided in json.team_facts.
+    - If no club text is provided, output one neutral support line (no specifics)
+    - Avoid textbook or Wikipedia-style summaries, avoid encyclopedia tone.
+    - Mix sentence lengths deliberately (some short, some meandering)
     - Use conversational quirks (“fun fact”, “you can almost feel…”, “and honestly”).
     - Add a touch of colour or parent perspective, e.g. “Kids love shouting the team name as if they’re on the pitch.”
     - Allow one sentence to sound a little anecdotal or casual, even slightly imperfect.
@@ -218,9 +220,11 @@ If ANY check fails:
 {{#if (and json.player_name (ne (trim json.player_name) ""))}}
 <h2><strong>About the Player</strong></h2>
 <ul>
-   <!-- Write 3–5 distinct sentences about the player. 
+   <!-- Write 4–6 distinct sentences about the player. 
       - Generate 3 distinct player fact bullets without duplication
       - Drop the shirt-number digits (e.g. "MESSI 10" → "Messi").
+      - If json.player_style == "story": output one story-style paragraph (80–100 words).
+      - Never invent trophies or stats; only use json.player_facts if available.
       - Blend admiration with casual phrasing: “Everyone knows Messi… and honestly, kids light up when they hear his name.”
       - Avoid sounding like a CV. Mix short and long sentences.
       - Use small human touches, e.g. “Parents tell us their kids tried to dribble like him in the garden.”
