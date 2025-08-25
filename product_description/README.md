@@ -78,6 +78,12 @@ Below is a **complete reference** of configurable variables found in `input.json
 
 ### Options & flags
 - **`socks_included`** *(bool)* — Controls the “Package includes” bullet in **Description** (`"Shirt and Shorts"` wording here only; appends “with socks / with no socks”).
+When generating the "What’s Included" list, always follow these rules:
+        If product_name has “Kit” → list Shirt + Shorts.
+        If it also has “(With Socks)” → include Socks.
+        If it has “(No Socks)” → exclude Socks.
+        If product_name has “Shirt” (not Kit) → Shirt only.
+Do not invent extra items or wording.
 - **`personalisation_available`** *(bool)* — Enables a personalisation bullet in **Description** (with safe wording—no promises beyond availability).
 - **`team_facts`** *(bool)* — If true, shows **About the Team** with factual but non‑invented content.
 - **`player_name`** *(string, optional)* — If provided, shows **About the Player**; the prompt will drop digits (e.g., `"MESSI 10"` → “Messi”) and use story‑like phrasing.
@@ -129,40 +135,58 @@ Each **SECTION** is defined once, and a final **LAYOUT CONTROL** block dictates 
 2. **BENEFITS**  
    - Emotional, parent‑oriented bullets. Mix lengths. Includes a casual anecdotal line.
 
-3. **DESCRIPTION**  
+3. **PRODUCT DETAILS**
+Each description must include a Product Details block with the heading:
+“{{json.team_name}} Kit: Key Details & Features”
+The block should cover:
+ Material: Always mention polyester (100% lightweight). Add light benefit wording (comfort, durability, washability). Avoid technical fabric jargon.
+ Club Inspiration: Link to shirts worn by {{json.team_name}} players.
+ Detail: Mention neckline or small authentic touch.
+ Print & Logos: Note that crest/sponsor logos are printed with durable finish.
+ Washing: Simple care line, e.g. machine wash cold, air dry.  
+     
+
+4. **DESCRIPTION**  
    - Key bullets including *Package includes* (special wording), *Personalisation* (if available), durability/fit, a legal line, and **CTA #2** as the **final** `<li>` in this section.
 
-4. **DELIVERY**  
+5. **DELIVERY**  
    - UK and EU timings; a note about potential delays (`{{POSSIBLE_DELAY}}`) and a friendly pointer to delivery details (`{{DELIVERY_DETAILS}}`).
 
-5. **PAYMENT**  
+6. **PAYMENT**  
    - Payment methods and a short human line for payment issues (`{{PAYMENT_ISSUE}}`).
 
-6. **CONTACT (“How to Reach Us”)**  
+7. **CONTACT (“How to Reach Us”)**  
    - Clear support email line with friendly tone. (Make sure your email matches your shop.)
 
-7. **TEAM** *(conditional on `team_facts`)*  
-   - 3–6 bullets that introduce the club in a light, fan‑friendly way. Avoid invented facts.
+8. **TEAM** *(conditional on `team_facts`)*  
+ - Display 4–6 bullets introducing the club in a light, fan-friendly way, 80-100 words
+ Do not invent facts. Use only text provided in the club library (team_knowledge.paragraph).
+ If no club text is provided, output one neutral support line (no specifics).
+ Mix short and long sentences; avoid encyclopedia tone.
 
-8. **PLAYER** *(conditional on `player_name`)*  
-   - Story‑style paragraph about the player; number is dropped from the name; short + long sentences; playful touches allowed.
+9. **PLAYER** *(conditional on `player_name`)*  
+ - Output a story-style paragraph about the player, 80-100 words
+ Drop the shirt number from the name (e.g., “MESSI 10” → “Messi”).
+ Use only text provided in the player library (player_knowledge.paragraph).
+ If no player text is provided, output one neutral admiration line.
+ Allow a gentle playful touch; keep it human; never invent trophies or stats.
 
-9. **REVIEWS**  
+10. **REVIEWS**  
    - Pull **3** short, human‑sounding summaries from `review_file`, including **≥1 recent** (last 2 months). Output reviewer name + date + paraphrased quote.
 
-10. **RELATED**  
+11. **RELATED**  
     - Links to **home**, **league/team collection**, and **other leagues** with short, helpful lead‑ins.
 
-11. **LAYOUT CONTROL (OUTPUT ORDER)**  
+12. **LAYOUT CONTROL (OUTPUT ORDER)**  
     - Five predefined layout variants. The prompt tells the model to **render sections above** and then **output them in this exact order** for the chosen variant. **TITLE is always first.**
 
-12. **DIVERSITY & UNIQUENESS**  
+13. **DIVERSITY & UNIQUENESS**  
     - Encourages varied sentence lengths, connectors, and fresh phrasing. Soft cap via `max_phrase_overlap`.
 
-13. **RISK & COMPLIANCE**  
+14. **RISK & COMPLIANCE**  
     - No “official”, no licensing/auth claims, no invented fabric tech, and safety around specific measurements.
 
-14. **CTA RULES**  
+15. **CTA RULES**  
     - **Two CTAs total**: one under **TITLE**, one as the **final line** of **DESCRIPTION**. Styles: `now_simple`, `gift_deadline`, `low_stock`.
 
 ---
