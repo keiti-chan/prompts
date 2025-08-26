@@ -115,12 +115,15 @@ If ANY check fails:
   <li><strong>Package includes:</strong> {{PACKAGE_INCLUDES}}</li>
 
   <!-- PRODUCT DETAILS:
-       - MATERIAL_LINE: If json.material exists, mention e.g. "100% lightweight polyester feel"; 
-         else fallback to "soft, lightweight feel for everyday wear".
+      - MATERIAL_LINE: Always mention "100% polyester" but paraphrase the surrounding phrasing to avoid repetition. 
+      Rotate among lines like:
+      - crafted from 100% polyester with a soft, lightweight feel for everyday wear
+      - made in 100% polyester, giving a breathable, easy-to-wash finish
+      - 100% polyester fabric designed for comfort and quick drying
+      - lightweight 100% polyester that kids can wear all day without fuss
+      Ensure every output contains "100% polyester" once, but vary the adjectives and sentence structure.
        - CLUB_INSPIRATION: Mention team_name and tie to shirts worn by players,
          else fallback to "inspired by the club colours".
-       - NECKLINE_DETAIL: If json.neckline exists, include (e.g. V-neck, crew neck); 
-         else fallback to "a comfortable neckline that looks smart".
        - LOGO_PRINT: Always include a parent-friendly line like 
          "Crest and sponsor areas use a smooth, durable finish".
        - WASHING_EXTRA: Add a short casual tip (e.g. "cold wash, air dry, and it’ll keep its colours"). -->
@@ -255,6 +258,21 @@ If ANY check fails:
 </ul>
 <!-- __END_SECTION_REVIEWS__ -->
 
+<!-- 9B PRODUCT EXPERIENCE -->
+<h2><strong>Real-life Experiences</strong></h2>
+<ul>
+  <!-- PRODUCT EXPERIENCE RULES:
+       - Pull from {{json.product_experience_file}}
+       - Pick exactly 2 lines per product.
+       - One from everyday_use, one from parent_story.
+       - Rotate/randomise based on seed for uniqueness.
+       - Do not output more than 2.
+       - Use natural tone, no symbols/placeholders.
+  -->
+  {{PRODUCT_EXPERIENCE_LINES}}
+</ul>
+<!-- __END_SECTION_PRODUCT_EXPERIENCE__ -->
+
 <!-- 10) RELATED (with link-only-on-keyword rule) -->
 <!-- __SECTION_RELATED__ -->
 <h2><strong>The Following Products May Interest You:</strong></h2>
@@ -283,6 +301,7 @@ Include TITLE first in all variants. -->
   <!-- OUTPUT TEAM -->
   <!-- OUTPUT PLAYER -->
   <!-- OUTPUT REVIEWS -->
+  <!-- OUTPUT PRODUCT EXPERIENCE -->
   <!-- OUTPUT RELATED -->
 {{/if}}
 
@@ -299,6 +318,7 @@ Include TITLE first in all variants. -->
   <!-- OUTPUT REVIEWS -->
   <!-- OUTPUT TEAM -->
   <!-- OUTPUT PLAYER -->
+  <!-- OUTPUT PRODUCT EXPERIENCE -->
   <!-- OUTPUT RELATED -->
 {{/if}}
 
@@ -315,6 +335,7 @@ Include TITLE first in all variants. -->
   <!-- OUTPUT TEAM -->
   <!-- OUTPUT PLAYER -->
   <!-- OUTPUT REVIEWS -->
+  <!-- OUTPUT PRODUCT EXPERIENCE -->
   <!-- OUTPUT RELATED -->
 {{/if}}
 
@@ -331,6 +352,7 @@ Include TITLE first in all variants. -->
   <!-- OUTPUT PAYMENT -->
   <!-- OUTPUT PLAYER -->
   <!-- OUTPUT TEAM -->
+  <!-- OUTPUT PRODUCT EXPERIENCE -->
   <!-- OUTPUT RELATED -->
 {{/if}}
 
@@ -347,6 +369,7 @@ Include TITLE first in all variants. -->
   <!-- OUTPUT TEAM -->
   <!-- OUTPUT PLAYER -->
   <!-- OUTPUT REVIEWS -->
+  <!-- OUTPUT PRODUCT EXPERIENCE -->
   <!-- OUTPUT RELATED -->
 {{/if}}
 
@@ -369,21 +392,21 @@ CTA RULES
 - Do not add CTAs in any other sections.
 - The TWO CTAs should be different.
 - Style for both CTAs: randomly choose ONE of the 15 styles below, unless a style is specified in the JSON.
-  - now_simple: “Add to basket and get the kit on the way.”
+  - now_simple: “Add to basket with secure checkout and get the kit on the way, safe delivery guaranteed.”
   - gift_deadline: “If it’s for a birthday, order soon to avoid last-minute stress.”
-  - low_stock: “Popular sizes go quickly — grab yours before they disappear.”
-  - treat_your_kid: “Make their day — order now and let them enjoy wearing it right away.”
-  - peace_of_mind: “Check out today and relax knowing your kit is on its way.”
+  - low_stock: “Popular sizes go quickly - grab yours before they disappear, with quick shipping included.”
+  - treat_your_kid: “Make their day — order now with safe payment and let them enjoy wearing it right away.”
+  - peace_of_mind: “Check out today with secure checkout and relax knowing your kit is on its way.”
   - play_ready: “Order now so it’s ready for the next kickabout or playtime.”
-  - smile_delivery: “Add to basket and look forward to the smile when it arrives.”
-  - parent_choice: “Trusted by parents — grab yours today with just a click.”
-  - quick_win: “One simple step — order today and it’s sorted.”
+  - smile_delivery: “Add to basket and look forward to the smile when it arrives, backed by our satisfaction guarantee”
+  - parent_choice: “Trusted by parents — grab yours today with just a click and secure checkout.”
+  - quick_win: “One simple step - order today, safe payment done and it’s sorted.”
   - family_fun: “Pop it in the basket and get ready for family football fun.”
   - memory_maker: “Secure yours now and create those little moments kids never forget.”
-  - no_fuss: “Easy checkout, quick delivery — order now without the hassle.”
+  - no_fuss: “Easy checkout, secure payment, quick delivery — order now without the hassle.”
   - proud_parent: “Order today and enjoy seeing them wear it with pride.”
-  - everyday_ready: “Add it now so they’re geared up for school, park, or play.”
-  - happy_surprise: “Treat them today — a little surprise that goes a long way.”
+  - everyday_ready: “Add it now so they’re geared up for school, park, or play - satisfaction guaranteed.”
+  - happy_surprise: “Treat them today — a little surprise that goes a long way, with secure delivery.”
 
 
 OUTPUT: Return only the final HTML block. No markdown, no explanations.
