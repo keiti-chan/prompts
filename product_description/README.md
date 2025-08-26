@@ -140,7 +140,14 @@ Each **SECTION** is defined once, and a final **LAYOUT CONTROL** block dictates 
 - Each description must include a Product Details block with the heading:
 “{{json.team_name}} Kit: Key Details & Features”
 The block should cover:
- Material: Always mention polyester (100% lightweight). Add light benefit wording (comfort, durability, washability). Avoid technical fabric jargon.
+ - **Material & Feel**: must always include the phrase **“100% polyester”** once,  
+  but paraphrase the sentence around it to keep variation.  
+  Examples:  
+  - crafted from 100% polyester with a soft, lightweight feel  
+  - made in 100% polyester, giving a breathable, easy-to-wash finish  
+  - 100% polyester fabric designed for comfort and quick drying  
+  - lightweight 100% polyester that kids can wear all day without fuss
+ Avoid technical fabric jargon.
  Club Inspiration: Link to shirts worn by {{json.team_name}} players.
  Detail: Mention neckline or small authentic touch.
  Print & Logos: Note that crest/sponsor logos are printed with durable finish.
@@ -171,6 +178,15 @@ The block should cover:
 9. **REVIEWS**  
    - Pull **3** short, human‑sounding summaries from `review_file`, including **≥1 recent** (last 2 months). Output reviewer name + date + paraphrased quote.
 
+9B **REAL-LIFE EXPERIENCES**  
+   - Heading: “Real-life Experiences”.  
+   - Exactly 2 lines chosen from `product_experience.json`:  
+     - One from `everyday_use`,  
+     - One from `parent_story`.  
+   - Rotate/randomise based on `seed` for uniqueness.  
+   - Do not output more than 2.  
+   - Use natural tone; no placeholders or symbols.
+
 10. **RELATED**  
     - Links to **home**, **league/team collection**, and **other leagues** with short, helpful lead‑ins.
 
@@ -185,7 +201,13 @@ The block should cover:
 
 14. **CTA RULES**  
     - **Two CTAs total**: one under **TITLE**, one as the **final line** of **DESCRIPTION**. Styles: `now_simple`, `gift_deadline`, `low_stock`.
-
+  - They must be different.  
+  - Styles: randomly choose 1 of 15 options.  
+  - Many CTA styles now include **trust inline signals** such as:  
+    - secure checkout  
+    - quick delivery  
+    - satisfaction guaranteed  
+  - No need to add extra trust badges; trust is woven into CTA copy itself.
 ---
 
 ## Running at scale
@@ -294,3 +316,7 @@ MIT (or your preferred license).
 ## Changelog
 
 - **v1.0.0** — First public release with 5 layout variants, dual‑CTA logic, CSV‑driven reviews, and seed‑based variation.
+- Added **Real-life Experiences** section (using `product_experience.json`).  
+- Updated **Material rule**: always include “100% polyester” with paraphrased phrasing.  
+- Expanded **CTA rules** to 15 options, now with built-in trust signals.  
+- Updated layout variants to include Real-life Experiences after Reviews.
